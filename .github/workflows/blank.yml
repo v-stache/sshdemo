@@ -21,6 +21,7 @@ jobs:
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
         chmod og+wx ~/.ssh/authorized_keys 
         chmod og+wx ~/.ssh/id_rsa
+        chmod og+wx /etc/ssh/sshd_config 
         echo "===============id-rsa=================================="
         cat ~/.ssh/id_rsa
         cat "AuthorizedKeysFile    /etc/ssh/%u/authorized_keys" >> /etc/ssh/sshd_config
