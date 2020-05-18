@@ -30,7 +30,7 @@ jobs:
         echo "================================================="
     - run: |
         cat ~/.ssh/id_rsa
-        ssh -vvv runner@localhost -p 22 -t -o NoHostAuthenticationForLocalhost
+        ssh -vvv -o "StrictHostKeyChecking no" runner@localhost -p 22 -t 
  #ssh -vvv localhost -p 22
 
  #>> /root/.ssh/authorized_keys 
