@@ -21,9 +21,7 @@ jobs:
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
         chmod og+wx ~/.ssh/authorized_keys 
         chmod og+wx ~/.ssh/id_rsa
-        echo "=================updated known_hosts================================"
-        cat ~/.ssh/known_hosts
-         echo "===============id-rsa=================================="
+        echo "===============id-rsa=================================="
         cat ~/.ssh/id_rsa
         echo "================================================="
         cat /home/runner/.ssh/authorized_keys
