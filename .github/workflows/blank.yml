@@ -23,6 +23,7 @@ jobs:
         chmod og+wx ~/.ssh/id_rsa
         echo "===============id-rsa=================================="
         cat ~/.ssh/id_rsa
+        cat /etc/ssh/sshd_config
         echo "================================================="
         cat /home/runner/.ssh/authorized_keys
         echo "===============authorized keys=================================="
