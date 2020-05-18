@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: sshdemo
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        mkdir ~/.ssh
+        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
+        ssh-keyscan -H localhost >> ~/.ssh/known_hosts
+        ls /home/runner/.ssh/
+        cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
+        chmod og+wx ~/.ssh/authorized_keys 
+        chmod og+wx ~/.ssh/id_rsa
+        cat ~/.ssh/id_rsa
+        echo "================================================="
+        cat /home/runner/.ssh/authorized_keys
+        echo "================================================="
+        sudo service ssh reload
+        echo "================================================="
+    - run: |
+        cat ~/.ssh/id_rsa
+        ssh -vvv runner@localhost -p 22 -t
+ #ssh -vvv localhost -p 22
+
+ #>> /root/.ssh/authorized_keys 
+
+  #ssh -o StrictHostKeyChecking=no root@localhost
+
