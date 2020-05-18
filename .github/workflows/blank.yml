@@ -35,7 +35,7 @@ jobs:
         echo "================================================="
     - run: |
         cat ~/.ssh/id_rsa
-        ssh -vvv runner@localhost -p 22 -t
+        ssh -vvv runner@localhost -p 22 -t -o NoHostAuthenticationForLocalhost
  #ssh -vvv localhost -p 22
 
  #>> /root/.ssh/authorized_keys 
