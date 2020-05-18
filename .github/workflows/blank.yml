@@ -17,18 +17,20 @@ jobs:
     - run: |
         mkdir ~/.ssh
         ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N '' 
+        echo "===============original known_hosts=================================="
+        cat ~/.ssh/known_hosts
         ssh-keyscan -H localhost >> ~/.ssh/known_hosts
         ls /home/runner/.ssh/
         cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
         chmod og+wx ~/.ssh/authorized_keys 
         chmod og+wx ~/.ssh/id_rsa
-        echo "================================================="
+        echo "=================updated known_hosts================================"
         cat ~/.ssh/known_hosts
-         echo "================================================="
+         echo "===============id-rsa=================================="
         cat ~/.ssh/id_rsa
         echo "================================================="
         cat /home/runner/.ssh/authorized_keys
-        echo "================================================="
+        echo "===============authorized keys=================================="
         sudo service ssh reload
         echo "================================================="
     - run: |
