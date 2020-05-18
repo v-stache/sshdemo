@@ -15,25 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        mkdir ~/.ssh
-        ssh-keygen -f /home/runner/.ssh/id_rsa -t rsa -N ''       
-        ls /home/runner/.ssh/
-        cat /home/runner/.ssh/id_rsa.pub >> /home/runner/.ssh/authorized_keys
-        chmod og+wx ~/.ssh/authorized_keys 
-        chmod og+wx ~/.ssh/id_rsa
-        chmod og+wx /etc/ssh/sshd_config 
-        echo "===============id-rsa=================================="
-        cat ~/.ssh/id_rsa
-        cat "AuthorizedKeysFile    /etc/ssh/%u/authorized_keys" >> /etc/ssh/sshd_config
-        cat /etc/ssh/sshd_config
-        echo "================================================="
-        cat /home/runner/.ssh/authorized_keys
-        echo "===============authorized keys=================================="
-        sudo service ssh reload
-        echo "================================================="
+        ssh-keygen -q -t rsa -N "" -f ~/.ssh/id_rsa
     - run: |
         cat ~/.ssh/id_rsa
-        ssh -vvv -o "StrictHostKeyChecking no" runner@localhost -p 22 -t 
+        ssh -vvv -o "StrictHostKeyChecking no" runner@localhost
  #ssh -vvv localhost -p 22
 
  #>> /root/.ssh/authorized_keys 
